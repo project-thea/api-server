@@ -34,8 +34,8 @@
               <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"	 viewBox="0 0 489.988 489.988" style="enable-background:new 0 0 489.988 489.988;" xml:space="preserve" stroke="currentColor" class="stroke-current text-gray-800 dark:text-gray-800 transform transition-transform duration-500 ease-in-out"><g>	<path d="M452.625,271.274l-226.8-226.9l8.8-8.8c8.3-8.3,8.3-20.8,0-29.1s-20.8-8.3-29.1,0l-199.3,199.4c-8.3,8.3-8.3,20.8,0,29.1		c11.4,11.4,24.5,4.9,29.1,0l9.3-9.3l226.4,226.2c77.7,70.1,156.7,26.1,181.7,1C502.325,402.874,502.525,321.074,452.625,271.274z		 M197.225,72.974l212.9,213.8h-248.2l-89.3-89.3L197.225,72.974z M423.625,423.874c-16.6,16.6-76.8,47.7-124.6,0l-95.5-95.5		c0,0,237-0.2,238.7-0.7C455.925,359.574,449.725,397.774,423.625,423.874z"/></g></svg>
             </div>
             <div class="text-right">
-              <p class="text-2xl">{{ num_tests }}</p>
-              <p>Tests</p>
+              <p class="text-2xl">{{ num_questionnaires }}</p>
+              <p>Questionnaires</p>
             </div>
           </div>
           <div class="dark:bg-gray-800 shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-gray-600 dark:border-gray-600 font-medium group">
@@ -90,8 +90,8 @@
 			</svg>
             </div>
             <div class="text-right">
-              <p class="text-2xl">{{ num_diseases }}</p>
-              <p>Diseases</p>
+              <p class="text-2xl">{{ num_projects }}</p>
+              <p>Projects</p>
             </div>
           </div>
           <div class="dark:bg-gray-800 shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-gray-600 dark:border-gray-600 font-medium group">
@@ -167,25 +167,25 @@
         },
 		props: {
 			num_subjects: Number,
-			num_tests: Number,
-			num_diseases: Number,
+			num_questionnaires: Number,
+			num_projects: Number,
 			num_users: Number,
 			data: Array
 	   },
-	   created() {
+	    created() {
 			this.chartData = {
 				'subjects': this.data.map(v => v.num_subjects),
-				'tests' : this.data.map(v => v.num_tests),
-				'diseases' : this.data.map(v => v.num_diseases),
+				'questionnaires' : this.data.map(v => v.num_questionnaires),
+				'projects' : this.data.map(v => v.num_projects),
 				'dates': this.data.map(v => v.the_date)
 			};
-	  },
+	  	},
     }
 </script>
 
 <style>
-  .small {
-    max-width: 600px;
-    margin:  150px auto;
-  }
+	.small {
+		max-width: 600px;
+		margin:  150px auto;
+	}
 </style>

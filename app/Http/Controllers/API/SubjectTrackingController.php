@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Validator;
 
 class SubjectTrackingController extends Controller
 {
-     /**
+    /**
      * Display a listing of the subject tracking.
      *
      * @return \Illuminate\Http\Response
@@ -94,17 +94,17 @@ class SubjectTrackingController extends Controller
     {
         //
     }
-	
+
     /**
      * Tracking anonymously
      *
      * @return \Illuminate\Http\Response
      */
     public function track_anonymously(Request $request)
-	{
-		$out = new \Symfony\Component\Console\Output\ConsoleOutput();
-		$out->writeln(print_r($request->all(), true));
-		
-		return $this->store($request);
-	}
+    {
+        $out = new \Symfony\Component\Console\Output\ConsoleOutput();
+        $out->writeln(print_r($request->all(), true));
+
+        return $this->store($request);
+    }
 }

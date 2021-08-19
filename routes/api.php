@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\API\SampleTrackingController;
 use App\Http\Controllers\API\SubjectTrackingController;
-use App\Http\Controllers\API\TestController;
+use App\Http\Controllers\API\QuestionnaireController;
 use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\API\SubjectController;
 use Illuminate\Http\Request;
@@ -27,20 +27,20 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/register', [UserController::class, 'register']);
 Route::post('/login', [UserController::class, 'login']);
 
-//Subject registrationg and tracking 
+//Subject registration and tracking 
 Route::post('/subjects/anon', [SubjectController::class, 'create_anonymously']);
 Route::post('/tracking/subject/anon', [SubjectTrackingController::class, 'track_anonymously']);
-Route::get('/tests/subject/{unique_id}/anon', [TestsController::class, 'get_tests']);
+Route::get('/questionnaires/subject/{unique_id}/anon', [QuestionnaireController::class, 'get_questionnaires']);
 
 //Protected routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/logout', [UserController::class, 'logout']);
-    Route::apiResource('/tests', TestController::class);
+    Route::apiResource('/questionnaires', QuestionnaireController::class, ['as' => 'api']);
     Route::get('/tracking/subject', [SubjectTrackingController::class, 'index']);
     Route::post('/tracking/subject', [SubjectTrackingController::class, 'store']);
     Route::get('/tracking/sample', [SampleTrackingController::class ,'index']);
     Route::post('/tracking/sample', [SampleTrackingController::class ,'store']);
 	
 	//Subjects
-	Route::apiResource('/subjects', SubjectController::class);
+	Route::apiResource('/subjects', SubjectController::class, ['as' => 'api']);
 });

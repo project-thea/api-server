@@ -27,7 +27,7 @@ class UpdateUserRequest extends FormRequest
             'first_name' => ['required', 'string', 'max:40'],
             'last_name' => ['required', 'string', 'max:40'],
             'email' => ['required', 'unique:users,email'],
-            'role' => ['required', 'string']
+            'role_id' => ['exists:App\Models\Role,id']
         ];
     }
 }

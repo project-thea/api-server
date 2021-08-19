@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Models\Subject;
-use App\Models\Test;
-use App\Models\Disease;
+use App\Models\Project;
+use App\Models\Questionnaire;
 use App\Models\User;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\DB;
@@ -14,13 +14,13 @@ class DashboardController extends Controller
 {
 	public function index()
 	{
-		//Get daily counts of subjects, tests, diseases, and users for the last 7 days
+		//Get daily counts of subjects, questionnaires, projects, and users for the last 7 days
 		$summary_query = "
 			SELECT 
 				t1.the_date AS the_date, 
 				COUNT(t2.id) AS num_subjects,
-				COUNT(t3.id) AS num_tests,
-				COUNT(t4.id) AS num_diseases,
+				COUNT(t3.id) AS num_questionnaires,
+				COUNT(t4.id) AS num_projects,
 				COUNT(t5.id) AS num_users
 			FROM (
 				SELECT DATE(cal.date) AS the_date
@@ -39,8 +39,8 @@ class DashboardController extends Controller
 				ORDER BY cal.date ASC
 			) AS t1 
 			LEFT JOIN subjects t2 ON t1.the_date = DATE_FORMAT(t2.created_at,'%Y-%m-%d')
-			LEFT JOIN tests t3 ON t1.the_date = DATE_FORMAT(t3.created_at,'%Y-%m-%d')
-			LEFT JOIN diseases t4 ON t1.the_date = DATE_FORMAT(t4.created_at,'%Y-%m-%d')
+			LEFT JOIN questionnaires t3 ON t1.the_date = DATE_FORMAT(t3.created_at,'%Y-%m-%d')
+			LEFT JOIN projects t4 ON t1.the_date = DATE_FORMAT(t4.created_at,'%Y-%m-%d')
 			LEFT JOIN users t5 ON t1.the_date = DATE_FORMAT(t5.created_at,'%Y-%m-%d')
 			GROUP BY t1.the_date
 		";
@@ -49,8 +49,8 @@ class DashboardController extends Controller
 		
 		return Inertia::render('Dashboard', [
 			'num_subjects' => Subject::count(),
-			'num_tests' => Test::count(),
-			'num_diseases' => Disease::count(),
+			'num_questionnaires' => Questionnaire::count(),
+			'num_projects' => Project::count(),
 			'num_users' => User::count(),
 			'data' => $summary
 		]);

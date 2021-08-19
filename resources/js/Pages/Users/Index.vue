@@ -57,7 +57,7 @@
                                             </inertia-link>
                                             
                                             <inertia-link @click="deleteUser(user.id)" :href="'/users/' + user.id + '/trash'" v-if="$page.props.loggedInUser.can.isAdmin" class="text-red-600 hover:text-red-900">
-                                                Delete
+                                                Archive
                                             </inertia-link>
                                         </td>
                                     </tr>

@@ -50,7 +50,7 @@ class SubjectController extends Controller
             'next_of_kin_phone' => 'required|string|max:20',
             'id_number' => 'required|string|max:55',
             'id_type' => 'required|string|max:55',
-			'unique_id' => 'string'
+            'unique_id' => 'string'
         ];
 
         $validator = Validator::make($data, $validationRules);
@@ -59,16 +59,14 @@ class SubjectController extends Controller
             return response(['error' => $validator->errors(), 'Validation Error']);
         }
 
-		if(!isset($data['unique_id'])){
-			$data['unique_id'] = Str::uuid();
-		}
-		$subject = Subject::create($data);
+        if (!isset($data['unique_id'])) {
+            $data['unique_id'] = Str::uuid();
+        }
+
+        $subject = Subject::create($data);
         $subjectsResource = new SubjectResource($subject);
         $apiResponse = APIHelpers::formatAPIResponse(false, 'Subject created successfully', $subjectsResource);
         return response()->json($apiResponse, 201);
-		
-
-		
     }
 
     /**
@@ -117,19 +115,18 @@ class SubjectController extends Controller
         $apiResponse = APIHelpers::formatAPIResponse(false, 'Subject deleted successfully', null);
         return response()->json($apiResponse, 204);
     }
-	
+
     /**
      * Handles anonymous subject registration
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-	public function create_anonymously(Request $request)
-	{
-		$out = new \Symfony\Component\Console\Output\ConsoleOutput();
-		$out->writeln(print_r($request->all(), true));
+    public function create_anonymously(Request $request)
+    {
+        $out = new \Symfony\Component\Console\Output\ConsoleOutput();
+        $out->writeln(print_r($request->all(), true));
 
-		return $this->store($request);
-	}
+        return $this->store($request);
+    }
 }
-

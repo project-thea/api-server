@@ -25,11 +25,11 @@ class Subject extends Model
     ];
 
     /**
-     * A subject consists of many tests.
+     * A subject consists of many questionnaires.
      */
-    public function tests()
+    public function questionnaires()
     {
-        return $this->hasMany(Test::class);
+        return $this->hasMany(Questionnaire::class);
     }
 
     /**

@@ -13,7 +13,7 @@ class AddColumnToRestoreToTable extends Migration
      */
     public function up()
     {
-        Schema::table('tests', function (Blueprint $table) {
+        Schema::table('questionnaires', function (Blueprint $table) {
             $table->softDeletes();
         });
     }
@@ -25,7 +25,7 @@ class AddColumnToRestoreToTable extends Migration
      */
     public function down()
     {
-        Schema::table('tests', function (Blueprint $table) {
+        Schema::table('questionnaires', function (Blueprint $table) {
             $table->dropSoftDeletes();
         });
     }

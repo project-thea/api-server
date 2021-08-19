@@ -2,9 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\Questionnaire;
 use App\Models\SampleTestTracking;
 use App\Models\SampleTracking;
-use App\Models\Test;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class SampleTestTrackingFactory extends Factory
@@ -27,8 +27,8 @@ class SampleTestTrackingFactory extends Factory
             'sample_tracking_id' => function () {
                 return SampleTracking::factory()->create()->id;
             },
-            'test_id' => function () {
-                return Test::factory()->create()->id;
+            'questionnaire_id' => function () {
+                return Questionnaire::factory()->create()->id;
             },
         ];
     }

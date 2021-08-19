@@ -64,8 +64,10 @@ class UserController extends Controller
         $this->authorize('isAdmin');
 
         $validatedData = $request->validated();
+        $validatedData['password'] = bcrypt($request->password);
+        
         User::create($validatedData);
-        return Redirect::route('users.index')->with('success', 'User successfully added.');
+        return Redirect::route('users.index')->with('success', 'User successfully created.');
     }
 
     /**
@@ -115,7 +117,7 @@ class UserController extends Controller
 
         $user = User::find($id);
         $user->delete();
-        return Redirect::route('users.index')->with('success', 'User successfully deleted.');
+        return Redirect::route('users.index')->with('success', 'User successfully archived.');
     }
 
     /**

@@ -15,8 +15,8 @@ class Status extends Model
         'title'
     ];
 
-    public function tests()
+    public function questionnaires()
     {
-        return $this->hasMany(Test::class);
+        return $this->hasMany(Questionnaire::class);
     }
 }

@@ -23,11 +23,11 @@
                                 <jet-nav-link :href="route('subjects.index')" :active="route().current('subjects')">
                                     Subjects
                                 </jet-nav-link>
-                                <jet-nav-link :href="route('tests.index')" :active="route().current('tests')">
-                                    Tests
+                                <jet-nav-link :href="route('questionnaires.index')" :active="route().current('questionnaires')">
+                                    Questionnaires
                                 </jet-nav-link>
-                                <jet-nav-link :href="route('diseases.index')" :active="route().current('diseases')">
-                                    Diseases
+                                <jet-nav-link :href="route('projects.index')" :active="route().current('projects')">
+                                    Projects
                                 </jet-nav-link>
                                 <jet-nav-link :href="route('tracking')" :active="route().current('tracking')">
                                     Tracking

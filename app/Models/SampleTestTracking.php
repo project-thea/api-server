@@ -20,10 +20,10 @@ class SampleTestTracking extends Model
     }
 
     /**
-     * Get a sample test that belongs to a test.
+     * Get a sample test that belongs to a questionnaire.
      */
-    public function test()
+    public function questionnaire()
     {
-        return $this->belongsTo(Test::class, 'test_id');
+        return $this->belongsTo(Questionnaire::class, 'questionnaire_id');
     }
 }
